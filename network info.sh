@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Jamf extension attribute to report network info. 
+
 ActivePortName=$(wdutil info | grep "Primary IPv4" | awk '{print $4}') 
 transferRate=$(wdutil info | grep "Tx Rate" | awk '{print $4,$5}')
 RSSI=$(wdutil info | grep "RSSI" | awk '{print $3,$4}' | head -1)
