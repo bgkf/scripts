@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Jamf extension attribute
+# check if touchID is enabled. 
+
+loggedInUser=$(stat -f%Su /dev/console)
+result=$(su -l "$loggedInUser" -c "bioutil -c")
+result2=$(echo $result | awk '{print $3}' | head -n 1)
+
+if [ "$result2" == "0" ]; then
+	result2="Not Configured"
+else
+	result2="Touch ID Unlock Configured"
+fi
+
+echo "<result>$result2</result>"
