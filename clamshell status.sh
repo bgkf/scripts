@@ -1,4 +1,5 @@
 #!/bin/bash
+
 clamshell=$(system_profiler SPDisplaysDataType | grep Retina)
 
 if [[ "$clamshell" ]]; then
