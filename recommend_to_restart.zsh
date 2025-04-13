@@ -1,5 +1,8 @@
 #! /bin/zsh
 
+# prompt the end to restart the computer with increasing frequency. 
+# uses IBM Notifieer.
+
 # Variables
 loggedInUser=$(stat -f%Su /dev/console)
 IBM_Path="/Library/Management/super/IBM Notifier.app/Contents/MacOS/IBM Notifier"
