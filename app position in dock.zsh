@@ -1,5 +1,8 @@
 #! /bin/zsh
 
+# Requires Dockutil: https://github.com/kcrawford/dockutil
+# Replace <APPNAME> in line 24 with the name of the app.
+
 # variables
 dockutil=/usr/local/bin/dockutil
 loggedInUser=$(stat -f%Su /dev/console)
