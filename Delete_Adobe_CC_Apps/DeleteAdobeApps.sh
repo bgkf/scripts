@@ -9,7 +9,7 @@
 # 5. Uninstall the selected apps.						        														                        
 
 # Link to Adobe's Uninstaller documentation:
-# https://helpx.aadobe.com/enterprise/using/uninstall-creative-cloud-products.html#uninstall-tool
+# https://helpx.adobe.com/enterprise/using/uninstall-creative-cloud-products.html#uninstall-tool
 
 ##########################################################################################################
 
@@ -37,11 +37,44 @@ ls -d /Applications/Adobe*20??/Adobe* 2>/dev/null | while read -r appPath; do
 	
 	appLongName=$(mdls -name kMDItemDisplayName "$appPath" | sed 's/\"//g' | cut -d "=" -f2 | sed 's/^ //' | cut -d "." -f1)
 	baseVersion="$(mdls -name kMDItemVersion "$appPath" | sed 's/^\"/#/' | cut -d "." -f 1 | cut -d '"' -f2).0"
-	appShortName=$(echo "$appLongName" | awk '{print $2}')
+	
+	# Extract app name without "Adobe" prefix and year suffix
+	# Handle names like "Adobe Media Encoder 2025" -> "Media Encoder"
+	appShortName=$(echo "$appLongName" | sed 's/^Adobe //' | sed 's/ 20[0-9][0-9]$//')
 	
 	# Get sapCode from adobeUninstaller if it exists
+	# Parse the whitespace-separated output format
 	sapCode=$(/usr/local/bin/adobeUninstaller --list | grep -v -E "^-|^\s*$|^AdobeUninstaller|^Creative|^Name" | \
-		awk -v short="$appShortName" -v ver="$baseVersion" '$1 == short && $3 == ver {print $2}')
+		awk -v target="$appShortName" -v target_ver="$baseVersion" '
+		{
+			# Find where the SapCode starts (first all-caps field)
+			sapcode_pos = 0
+			baseversion_pos = 0
+			
+			for(i = 1; i <= NF; i++) {
+				if($i ~ /^[A-Z]{2,5}$/ && sapcode_pos == 0) {
+					sapcode_pos = i
+				}
+				if($i == target_ver && i > sapcode_pos) {
+					baseversion_pos = i
+					break
+				}
+			}
+			
+			if(sapcode_pos > 0 && baseversion_pos > 0) {
+				# Reconstruct the app name from fields 1 to sapcode_pos-1
+				name = $1
+				for(j = 2; j < sapcode_pos; j++) {
+					name = name " " $j
+				}
+				
+				# Check if name and version match
+				if(name == target && $baseversion_pos == target_ver) {
+					print $sapcode_pos
+					exit
+				}
+			}
+		}' | head -1)
 	
 	# Build the combined json entry
 	adobeAppsJson=$(echo "$adobeAppsJson" | jq --arg appLongName "$appLongName" \
