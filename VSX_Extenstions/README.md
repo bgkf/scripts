@@ -8,4 +8,6 @@ This is a mechanism to scan for computers with these VSX extensions and, if foun
 - The `--apply` flag must be passeed (in policy parameter 4 when using Jamf) to actually remove extensions. <br>
 - Two files are created in /opt. LOG_FILE="/opt/glassworm-cleanup.log" and EA_FILE="/opt/glassworm-cleanup-ea.txt" <br>
 <br>
-The list of extensions is sourced from https://socket.dev/supply-chain-attacks/glassworm-v2.
+The list of extensions is sourced from https://socket.dev/supply-chain-attacks/glassworm-v2. <br>
+<br>
+The `.sh` files were created with an assist from Claude code.
