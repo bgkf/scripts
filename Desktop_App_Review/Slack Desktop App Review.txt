@@ -1,0 +1,90 @@
+# Slack Desktop App Review
+
+#### **SUMMARY**
+
+Slack (TeamIdentifier: BQR82RBBHL) is a macOS application. The binary is signed and notarized, with a hardened runtime and 1 entitlement(s). This is an Electron app with some fuses disabled.
+
+#### **GENERAL INFO**
+
+BundleID = com.tinyspeck.slackmacgap
+TeamIdentifier = BQR82RBBHL
+
+Where is the installer sourced from?
+
+1. ~~Appstore~~
+2. Internet
+   1. Distributed as a .dmg disk image.
+   2. Downloaded via: Chrome
+
+Version Reviewed: 4.51.185
+
+#### **PRIMARY BINARY**
+
+Path to binary.
+/Volumes/Slack/Slack.app/Contents/MacOS/Slack
+
+Universal binary: x86_64 + arm64
+
+Is it sandboxed? No
+
+Is it signed and notarized? Yes
+
+Does it have a hardened runtime? Yes
+Are there exceptions/entitlements? Yes
+com.apple.security.cs.allow-jit
+
+#### **WHAT ELSE IS INSTALLED**
+
+Frameworks
+
+1. Electron Framework.framework
+   -   RunAsNode is Disabled
+   -   EnableCookieEncryption is Enabled
+   -   EnableNodeOptionsEnvironmentVariable is Disabled
+   -   EnableNodeCliInspectArguments is Disabled
+   -   EnableEmbeddedAsarIntegrityValidation is Enabled
+   -   OnlyLoadAppFromAsar is Enabled
+   -   LoadBrowserProcessSpecificV8Snapshot is Disabled
+   -   GrantFileProtocolExtraPrivileges is Disabled
+   -   WasmTrapHandlers is Enabled
+2. Mantle.framework
+3. ReactiveObjC.framework
+4. Slack Helper (GPU).app
+5. Slack Helper (Plugin).app
+6. Slack Helper (Renderer).app
+7. Slack Helper.app
+8. Squirrel.framework
+
+#### **ADDITIONAL BINARIES**
+
+Slack Helper (GPU)
+
+1. Is it sandboxed? No
+2. Signed and notarized? Yes
+3. Hardened runtime? Yes
+4. Are there exceptions/entitlements? Yes
+   1. com.apple.security.cs.allow-jit
+
+Slack Helper (Plugin)
+
+1. Is it sandboxed? No
+2. Signed and notarized? Yes
+3. Hardened runtime? Yes
+4. Are there exceptions/entitlements? Yes
+   1. com.apple.security.cs.allow-jit
+
+Slack Helper (Renderer)
+
+1. Is it sandboxed? No
+2. Signed and notarized? Yes
+3. Hardened runtime? Yes
+4. Are there exceptions/entitlements? Yes
+   1. com.apple.security.cs.allow-jit
+
+Slack Helper
+
+1. Is it sandboxed? No
+2. Signed and notarized? Yes
+3. Hardened runtime? Yes
+4. Are there exceptions/entitlements? Yes
+   1. com.apple.security.cs.allow-jit
