@@ -1,0 +1,54 @@
+# Cyberduck Desktop App Review
+
+#### **SUMMARY**
+
+Cyberduck (TeamIdentifier: G69SCX94XU) is a macOS application. The binary is signed and notarized, with a hardened runtime and 1 entitlement(s).
+
+#### **GENERAL INFO**
+
+BundleID = ch.sudo.cyberduck
+TeamIdentifier = G69SCX94XU
+
+Where is the installer sourced from?
+
+1. ~~Appstore~~
+2. Internet
+   1. Distributed as a .zip archive.
+   2. Downloaded via: Chrome
+
+Version Reviewed: 9.5.3
+
+#### **PRIMARY BINARY**
+
+Path to binary.
+/var/folders/m8/gxx6gjcj1vz1nl4lyx7ck01h0000gp/T/tmp.cxP26aZyO5/Cyberduck.app/Contents/MacOS/Cyberduck
+
+Universal binary: x86_64 + arm64
+
+Is it sandboxed? Yes
+
+Is it signed and notarized? Yes
+
+Does it have a hardened runtime? Yes
+Are there exceptions/entitlements? Yes
+com.apple.security.app-sandbox
+
+#### **WHAT ELSE IS INSTALLED**
+
+Frameworks
+
+1. JavaNativeFoundation.framework
+2. libcore.dylib
+3. libjdns_sd.dylib
+4. libjnidispatch.dylib
+5. librococoa.dylib
+6. Sparkle.framework
+
+#### **ADDITIONAL BINARIES**
+
+Updater
+
+1. Is it sandboxed? No
+2. Signed and notarized? Yes
+3. Hardened runtime? Yes
+4. Are there exceptions/entitlements? No
